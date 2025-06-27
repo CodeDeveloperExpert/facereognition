@@ -2,9 +2,9 @@
 
 Este repositorio contiene el código del frontend para una aplicación de reconocimiento facial desarrollada con Ionic y Angular. La aplicación se conecta a un backend desarrollado en Flask para manejar la autenticación y el reconocimiento facial.
 
-Jorge Isaac Góngra Naranjo
-Jonatan Ocoro Perea
-María del Mar Garcés Celorio
+- Jorge Isaac Góngra Naranjo
+- Jonatan Ocoro Perea
+- María del Mar Garcés Celorio
 
 ## Descripción
 
@@ -31,8 +31,8 @@ Para ejecutar este proyecto, necesitarás:
 1. Clona este repositorio:
 
 ```bash
-git clone https://github.com/tu-usuario/reconocimiento-facial-frontend.git
-cd reconocimiento-facial-frontend
+git clone https://github.com/CodeDeveloperExpert/facereognition.git
+cd facereognition
 ```
 
 2. Instala las dependencias del proyecto:
