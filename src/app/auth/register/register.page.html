@@ -1,0 +1,155 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button (click)="goBack()"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Crear Cuenta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="register-container">
+    
+    <!-- Barra de progreso -->
+    <div class="progress-section">
+      <ion-text color="medium">
+        <p>Paso {{ currentStep }} de {{ steps.length }}</p>
+      </ion-text>
+      <ion-progress-bar [value]="progress" color="primary"></ion-progress-bar>
+    </div>
+
+    <!-- Paso 1: Datos Personales -->
+    <ion-card *ngIf="currentStep === 1">
+      <ion-card-header>
+        <ion-card-title>
+          <ion-icon name="person"></ion-icon>
+          {{ steps[0].title }}
+        </ion-card-title>
+      </ion-card-header>
+      
+      <ion-card-content>
+        <p class="step-description">{{ steps[0].description }}</p>
+        
+        <ion-item>
+          <ion-label position="stacked">Nombre completo</ion-label>
+          <ion-input 
+            type="text" 
+            [(ngModel)]="nombre" 
+            placeholder="Ingresa tu nombre">
+          </ion-input>
+        </ion-item>
+        
+        <ion-item>
+          <ion-label position="stacked">Email</ion-label>
+          <ion-input 
+            type="email" 
+            [(ngModel)]="email" 
+            placeholder="tu@email.com">
+          </ion-input>
+        </ion-item>
+        
+        <div class="button-container">
+          <ion-button 
+            expand="block" 
+            (click)="registerBasicData()" 
+            [disabled]="isLoading">
+            <ion-spinner *ngIf="isLoading" name="crescent"></ion-spinner>
+            <span *ngIf="!isLoading">Continuar</span>
+          </ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Paso 2: Registro de Foto -->
+    <ion-card *ngIf="currentStep === 2">
+      <ion-card-header>
+        <ion-card-title>
+          <ion-icon name="camera"></ion-icon>
+          {{ steps[1].title }}
+        </ion-card-title>
+      </ion-card-header>
+      
+      <ion-card-content>
+        <p class="step-description">{{ steps[1].description }}</p>
+        
+        <div class="photo-options">
+          
+          <ion-button 
+            expand="block" 
+            fill="outline" 
+            (click)="capturePhoto()"
+            [disabled]="isLoading">
+            <ion-icon name="camera" slot="start"></ion-icon>
+            Tomar Foto con Cámara
+          </ion-button>
+          
+          <ion-button 
+            expand="block" 
+            fill="outline" 
+            (click)="selectPhotoFile()"
+            [disabled]="isLoading">
+            <ion-icon name="image" slot="start"></ion-icon>
+            Seleccionar desde Archivo
+          </ion-button>
+          
+        </div>
+        
+        <div class="skip-section">
+          <ion-text color="medium">
+            <p class="instructions">
+              La foto es necesaria para el reconocimiento facial. Asegúrate de que tu rostro esté bien iluminado y claramente visible.
+            </p>
+          </ion-text>
+          
+          <ion-button 
+            fill="clear" 
+            size="small" 
+            (click)="skipPhotoStep()"
+            [disabled]="isLoading">
+            Saltar este paso
+          </ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Paso 3: Registro Completado -->
+    <ion-card *ngIf="currentStep === 3">
+      <ion-card-header>
+        <ion-card-title class="success-title">
+          <ion-icon name="checkmark-circle" color="success"></ion-icon>
+          {{ steps[2].title }}
+        </ion-card-title>
+      </ion-card-header>
+      
+      <ion-card-content>
+        <div class="success-content">
+          <p class="step-description">{{ steps[2].description }}</p>
+          
+          <div class="user-info">
+            <ion-text color="medium">
+              <p>
+                <strong>Nombre:</strong> {{ nombre }}<br>
+                <strong>Email:</strong> {{ email }}
+              </p>
+            </ion-text>
+          </div>
+          
+          <div class="button-container">
+            <ion-button 
+              expand="block" 
+              (click)="goToLogin()">
+              Ir al Login
+            </ion-button>
+          </div>
+          
+          <ion-text color="success">
+            <p class="success-message">
+              Ya puedes iniciar sesión con reconocimiento facial o email.
+            </p>
+          </ion-text>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+</ion-content>

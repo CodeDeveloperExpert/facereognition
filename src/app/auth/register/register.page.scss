@@ -1,0 +1,134 @@
+.register-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.progress-section {
+  text-align: center;
+  margin-bottom: 30px;
+  
+  p {
+    margin: 0 0 10px 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  
+  ion-progress-bar {
+    height: 8px;
+    border-radius: 4px;
+  }
+}
+
+.step-description {
+  color: var(--ion-color-medium);
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.button-container {
+  margin-top: 25px;
+}
+
+.photo-options {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.skip-section {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid var(--ion-color-light);
+  
+  .instructions {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin-bottom: 15px;
+  }
+}
+
+.success-content {
+  text-align: center;
+  
+  .user-info {
+    background: var(--ion-color-light);
+    border-radius: 8px;
+    padding: 15px;
+    margin: 20px 0;
+    
+    p {
+      margin: 0;
+      text-align: left;
+    }
+  }
+  
+  .success-message {
+    font-size: 0.9rem;
+    margin-top: 20px;
+    font-weight: 500;
+  }
+}
+
+.success-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 1.3rem;
+  
+  ion-icon {
+    font-size: 1.5rem;
+  }
+}
+
+// Estilos para los cards
+ion-card {
+  margin-bottom: 20px;
+  
+  ion-card-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.2rem;
+  }
+}
+
+// Estilos para los items del formulario
+ion-item {
+  margin-bottom: 15px;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Animaciones para los pasos
+.register-container ion-card {
+  animation: slideIn 0.3s ease-in-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// Responsive
+@media (max-width: 480px) {
+  .register-container {
+    padding: 10px;
+  }
+  
+  .photo-options {
+    gap: 12px;
+  }
+}

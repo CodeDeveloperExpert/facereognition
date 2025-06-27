@@ -1,0 +1,136 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Iniciar Sesión</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="login-container">
+    
+    <!-- Logo o título -->
+    <div class="header-section">
+      <h1>Bienvenido</h1>
+      <p>Inicia sesión con tu método preferido</p>
+    </div>
+
+    <!-- Selector de método de login -->
+    <div class="method-selector">
+      <ion-button 
+        [fill]="loginMethod === 'email' ? 'solid' : 'outline'" 
+        (click)="toggleLoginMethod()"
+        size="small">
+        <ion-icon name="mail" slot="start"></ion-icon>
+        Email
+      </ion-button>
+      
+      <ion-button 
+        [fill]="loginMethod === 'face' ? 'solid' : 'outline'" 
+        (click)="toggleLoginMethod()"
+        size="small">
+        <ion-icon name="camera" slot="start"></ion-icon>
+        Facial
+      </ion-button>
+    </div>
+
+    <!-- Formulario de login con email -->
+    <ion-card *ngIf="loginMethod === 'email'">
+      <ion-card-header>
+        <ion-card-title>
+          <ion-icon name="mail"></ion-icon>
+          Login con Email
+        </ion-card-title>
+      </ion-card-header>
+      
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="stacked">Email</ion-label>
+          <ion-input 
+            type="email" 
+            [(ngModel)]="email" 
+            placeholder="tu@email.com">
+          </ion-input>
+        </ion-item>
+        
+        <ion-item>
+          <ion-label position="stacked">Contraseña</ion-label>
+          <ion-input 
+            type="password" 
+            [(ngModel)]="password" 
+            placeholder="Tu contraseña">
+          </ion-input>
+        </ion-item>
+        
+        <div class="button-container">
+          <ion-button 
+            expand="block" 
+            (click)="loginWithEmail()" 
+            [disabled]="isLoading">
+            <ion-spinner *ngIf="isLoading" name="crescent"></ion-spinner>
+            <span *ngIf="!isLoading">Iniciar Sesión</span>
+          </ion-button>
+        </div>
+        
+        <ion-text color="medium">
+          <p class="note">
+            <ion-icon name="person"></ion-icon>
+            Nota: Login con email no está implementado en el backend actual
+          </p>
+        </ion-text>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Login con reconocimiento facial -->
+    <ion-card *ngIf="loginMethod === 'face'">
+      <ion-card-header>
+        <ion-card-title>
+          <ion-icon name="camera"></ion-icon>
+          Reconocimiento Facial
+        </ion-card-title>
+      </ion-card-header>
+      
+      <ion-card-content>
+        <div class="face-login-options">
+          
+          <ion-button 
+            expand="block" 
+            fill="outline" 
+            (click)="loginWithFaceCapture()"
+            [disabled]="isLoading">
+            <ion-icon name="camera" slot="start"></ion-icon>
+            Tomar Foto Ahora
+          </ion-button>
+          
+          <ion-button 
+            expand="block" 
+            fill="outline" 
+            (click)="loginWithFaceFile()"
+            [disabled]="isLoading">
+            <ion-icon name="image" slot="start"></ion-icon>
+            Seleccionar Imagen
+          </ion-button>
+          
+        </div>
+        
+        <ion-text color="medium">
+          <p class="instructions">
+            Para usar el reconocimiento facial, primero debes haber registrado tu foto en el sistema.
+          </p>
+        </ion-text>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Botón para ir al registro -->
+    <div class="register-section">
+      <ion-text color="medium">
+        <p>¿No tienes cuenta?</p>
+      </ion-text>
+      <ion-button 
+        fill="clear" 
+        size="small" 
+        (click)="goToRegister()">
+        Crear cuenta nueva
+      </ion-button>
+    </div>
+
+  </div>
+</ion-content>
