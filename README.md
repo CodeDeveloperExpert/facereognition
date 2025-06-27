@@ -2,6 +2,10 @@
 
 Este repositorio contiene el código del frontend para una aplicación de reconocimiento facial desarrollada con Ionic y Angular. La aplicación se conecta a un backend desarrollado en Flask para manejar la autenticación y el reconocimiento facial.
 
+Jorge Isaac Góngra Naranjo
+Jonatan Ocoro Perea
+María del Mar Garcés Celorio
+
 ## Descripción
 
 El frontend de la aplicación de reconocimiento facial permite a los usuarios:
